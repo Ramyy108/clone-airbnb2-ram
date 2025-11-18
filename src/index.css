@@ -16,3 +16,138 @@ body {
 #root {
   min-height: 100vh;
 }
+
+/* ----------------------------
+  MOBILE-FIRST / RESPONSIVE FIX
+  Paste this at the END of your main CSS file
+  (src/styles.css or src/index.css)
+   ---------------------------- */
+
+/* Safety: prevent horizontal scroll globally */
+html, body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Make all images responsive */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Common container padding so content doesn't touch edges */
+.container, .page-container, .site-wrap {
+  padding-left: 12px;
+  padding-right: 12px;
+  box-sizing: border-box;
+}
+
+/* Generic grid/flex helpers (won't change desktop if you already have rules) */
+.cards-grid, .list, .listings, .cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+/* Ensure flex children can shrink (fixes search-pill overflow) */
+.navbar, .header, .toolbar, .topbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.navbar * , .header * { min-width: 0; }
+
+/* If you have a search element that overflows, target it */
+.search, .search-pill, .search-box, .search-bar {
+  flex: 1 1 auto;
+  min-width: 0; /* critical to allow shrinking in flex */
+  max-width: 100%;
+}
+
+/* Filters row: allow horizontal scroll on small screens */
+.filters-row, .filters, .tags-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 6px;
+}
+
+/* Cards: ensure full-width cards on phone */
+.card, .listing-card, .property-card {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Image in card: keep aspect and avoid fixed heights */
+.card img, .listing-card img, .property-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* If header is fixed at top, avoid content being hidden below it */
+.header-fixed, .navbar.fixed, .topbar.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+/* Add top padding to main content if header is fixed (adjust height if needed) */
+@media (max-width: 768px) {
+  .page-content, .main-content, .content {
+    padding-top: 72px; /* change to actual header height if different */
+  }
+}
+
+/* MOBILE-SPECIFIC ADJUSTMENTS - only apply under 768px */
+@media (max-width: 768px) {
+  /* Reduce paddings/margins on mobile */
+  .container, .page-container, .site-wrap {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /* Navbar tweaks */
+  .navbar, .header, .topbar {
+    padding: 8px 6px;
+    gap: 8px;
+  }
+  .logo { margin-right: 8px; }
+
+  /* Put search on its own row on small screens */
+  .search, .search-pill {
+    width: 100%;
+    order: 2;
+    margin-top: 6px;
+  }
+  .profile-area, .profile, .user-menu {
+    order: 1;
+    margin-left: auto;
+  }
+
+  /* Cards stack single column and reduce spacing */
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Carousel / controls reposition if needed */
+  .card .carousel .controls, .carousel-controls {
+    left: 8px;
+    right: 8px;
+  }
+
+  /* Make buttons and touch targets bigger for mobile */
+  button, .btn {
+    min-height: 44px;
+    padding: 10px 12px;
+  }
+}
+

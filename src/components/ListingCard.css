@@ -1,26 +1,22 @@
+/* ---- CARD BASE ---- */
 .listing-card {
-  cursor: pointer;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
+/* ---- IMAGE FIX (MOST IMPORTANT) ---- */
 .image-container {
+  width: 100%;
   position: relative;
-  width: 100%;
-  padding-bottom: 100%;
+  aspect-ratio: 4 / 3;   /* FIXED RATIO FOR ALL CARDS */
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: 16px;
+  background: #f5f5f5; /* fallback background */
 }
 
-.image-slider {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
+/* Image always covers full box */
 .listing-image {
   width: 100%;
   height: 100%;
@@ -28,116 +24,85 @@
   display: block;
 }
 
+/* ---- SLIDER CONTROL ---- */
+.image-slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
 .nav-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
+  background: white;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.9);
   border: none;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
-  opacity: 0;
-  transition: opacity 0.2s, background-color 0.2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  cursor: pointer;
 }
+.nav-button.prev { left: 8px; }
+.nav-button.next { right: 8px; }
 
-.listing-card:hover .nav-button {
-  opacity: 1;
-}
-
-.nav-button:hover {
-  background-color: rgba(255, 255, 255, 1);
-  transform: translateY(-50%) scale(1.04);
-}
-
-.nav-button.prev {
-  left: 12px;
-}
-
-.nav-button.next {
-  right: 12px;
-}
-
+/* ---- DOTS ---- */
 .image-dots {
   position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 10px;
+  left: 0;
+  right: 0;
   display: flex;
-  gap: 4px;
-  z-index: 1;
+  justify-content: center;
+  gap: 6px;
 }
 
 .dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.6);
-  transition: background-color 0.2s;
+  background: rgba(255,255,255,0.8);
 }
-
 .dot.active {
-  background-color: rgba(255, 255, 255, 1);
+  background: white;
 }
 
+/* ---- FAVORITE BADGE ---- */
 .favorite-badge {
   position: absolute;
   top: 12px;
-  right: 12px;
   left: 12px;
+  right: 12px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  z-index: 2;
+  z-index: 20;
 }
 
 .guest-favorite-label {
+  background: white;
+  padding: 6px 12px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
-  gap: 4px;
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 6px 10px;
-  border-radius: 20px;
-  font-size: 12px;
+  gap: 6px;
   font-weight: 600;
-  color: #222;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
-}
-
-.trophy-icon {
-  font-size: 14px;
 }
 
 .favorite-button {
-  width: 28px;
-  height: 28px;
+  background: none;
   border: none;
-  background-color: transparent;
   cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s;
 }
 
-.favorite-button:hover {
-  transform: scale(1.1);
-}
-
-.favorite-button.active svg {
-  fill: #FF385C;
-}
-
+/* ---- TEXT SECTION ---- */
 .listing-details {
+  padding: 4px 2px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px; /* very small clean spacing */
 }
 
 .listing-header {
@@ -146,62 +111,30 @@
   align-items: center;
 }
 
-.listing-location {
-  font-size: 15px;
-  font-weight: 600;
-  color: #222;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.listing-rating {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 14px;
-  color: #222;
-  flex-shrink: 0;
-}
-
 .listing-title {
-  font-size: 15px;
-  color: #717171;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 600;
 }
 
-.listing-type {
-  font-size: 15px;
-  color: #717171;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
+.listing-location,
+.listing-type,
 .listing-dates {
-  font-size: 15px;
-  color: #717171;
+  font-size: 14px;
+  color: #555;
 }
 
 .listing-price {
+  margin-top: 6px;
   font-size: 15px;
-  margin-top: 4px;
 }
 
 .price-amount {
   font-weight: 600;
-  color: #222;
 }
 
-.price-period {
-  font-weight: 400;
-  color: #222;
-}
-
+/* ---- MOBILE ---- */
 @media (max-width: 768px) {
-  .listing-card {
-    gap: 8px;
+  .listing-details {
+    padding: 6px 2px;
   }
 }

@@ -47,18 +47,70 @@ body {
   height: 16px;
 }
 
-.content-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  position: relative;
-}
-
 @media (max-width: 1024px) {
-  .content-wrapper {
-    grid-template-columns: 1fr;
-  }
-
   .info-bar {
     padding: 16px 24px;
   }
 }
+
+/* ===== Immediate fix for carousel image gaps inside cards ===== */
+
+/* 1) Make a stable image container area for every card */
+.card .image-wrap,
+.listing-card .image-wrap,
+.property-card .image-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 3; /* same visible area for all cards */
+  overflow: hidden;
+  border-radius: 8px;
+  display: block;
+  position: relative;
+  background: #f6f6f6; /* fallback background so blank area isn't white */
+}
+
+/* 2) Ensure all slides/images fill the image-wrap exactly */
+.card .image-wrap img,
+.listing-card .image-wrap img,
+.property-card .image-wrap img,
+.card .carousel img,
+.slick-slide img,
+.swiper-slide img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 3) If your carousel creates a list or slide wrapper, make it fill the wrap */
+.card .carousel,
+.card .carousel .slides,
+.card .carousel .slide,
+.slick-slider,
+.slick-list,
+.slick-track,
+.swiper,
+.swiper-wrapper,
+.swiper-slide {
+  height: 100%;
+}
+
+/* 4) Remove any bottom margin the carousel or images might add */
+.card .carousel,
+.card .image-wrap,
+.slick-list,
+.swiper-wrapper {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* 5) Keep content (title/text) glued right below the image area */
+.card .info,
+.listing-card .info {
+  margin-top: 8px;
+  padding-top: 0;
+}
+
+/* 6) Desktop & mobile safe: only enforcing image container & slide filling — no layout overrides */
+
