@@ -1,0 +1,139 @@
+/* .map-view {
+  position: sticky;
+  top: 80px;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #f7f7f7;
+}
+
+.map-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.map-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.map-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.price-markers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.price-marker {
+  position: absolute;
+  padding: 8px 12px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.price-marker:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.24);
+  z-index: 2;
+}
+
+.price-marker.active {
+  background-color: #222;
+  color: #fff;
+  border-color: #222;
+  z-index: 2;
+}
+
+.map-controls {
+  position: absolute;
+  bottom: 120px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 10;
+}
+
+.map-control-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #222;
+  transition: background-color 0.2s;
+}
+
+.map-control-button:hover {
+  background-color: #f7f7f7;
+}
+
+.fullscreen-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #222;
+  transition: background-color 0.2s;
+  z-index: 10;
+}
+
+.fullscreen-button:hover {
+  background-color: #f7f7f7;
+}
+
+.google-logo {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 8px 12px;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+@media (max-width: 1024px) {
+  .map-view {
+    display: none;
+  }
+} */
